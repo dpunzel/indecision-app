@@ -22,10 +22,10 @@ var template = (
 var templateTwo = (
     <div>
         <h1>David Punzel</h1>
-        <p>Age: 22</p>
-        <p>Location: Portland Oregon</p>
+        <p>Age: 122</p>
+        <p>Location: Kronos</p>
     </div>
 );
 var appRoot = document.getElementById('app');
-
+// ReactDOM.render(template, appRoot);
 ReactDOM.render(templateTwo, appRoot);

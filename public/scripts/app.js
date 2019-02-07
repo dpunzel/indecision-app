@@ -50,14 +50,14 @@ var templateTwo = React.createElement(
     React.createElement(
         'p',
         null,
-        'Age: 22'
+        'Age: 122'
     ),
     React.createElement(
         'p',
         null,
-        'Location: Portland Oregon'
+        'Location: Kronos'
     )
 );
 var appRoot = document.getElementById('app');
-
+// ReactDOM.render(template, appRoot);
 ReactDOM.render(templateTwo, appRoot);
