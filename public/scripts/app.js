@@ -1,58 +1,72 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log('App.js is running!');
 
-// const add = function (a, b) {
-//   console.log(arguments);
-//   return a + b;
+var app = {
+    title: 'The Indecision App',
+    subtitle: 'Some random content',
+    options: ['One', 'Two']
+};
+
+// JSX - JavaScript XML
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' + ' ' + app.options : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item two'
+        )
+    )
+);
+
+// const user = {
+//     name: 'David',
+//     age: 12,
+//     location: 'Kronos'
 // };
-var add = function add(a, b) {
-    // console.log(arguments); arguments no longer available in arrow functions
-    return a + b;
-};
-console.log(add(55, 1));
-// this keyword - no longer bound
-
-var user = {
-    name: 'David',
-    cities: ['Portland', 'Seattle', 'LaPine'],
-    // we can also remove this function -> printPlacesLived: function ()
-    // to just printPlacesLived()
-    //     printPlacesLived() {
-    //       console.log(this.name);
-    //       console.log(this.cities);
-    //         // changed the function to arrow function to make this.name work
-    //       this.cities.forEach((city) => {
-    //         console.log(this.name + ' has lived in ' + city);
-    //       });
-    //     }
-    // };
-    // user.printPlacesLived();
-
-    // exploring map method
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has lived in  ' + city;
-        });
-    }
-};
-console.log(user.printPlacesLived());
-
-// challenge area
-var multiplier = {
-    // numbers - array of numbers
-    numbers: [10, 20, 30],
-    // multiplyBy - single number
-    multiplyBy: 3,
-    // multiply - return a new array where the number have been multiplied
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
-};
-console.log(multiplier.multiply()); // [1,2,3]2 [2,4,6]
+//
+// function getLocation(location) {
+//     if (location) {
+//         return <p>Location: {location}</p>;
+//     } else {
+//         return undefined;
+//     }
+// }
+//
+// const templateTwo = (
+//     <div>
+//         <h1>{user.name ? user.name : 'Anonymous'}</h1>
+//         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+//         {/*<p>Age: {user.age}</p>*/}
+//         {/*<p>Location: {getLocation(user.location)}</p>*/}
+//         {getLocation(user.location)}
+//     </div>
+// );
+var appRoot = document.getElementById('app');
+// ReactDOM.render(template, appRoot);
+// ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
