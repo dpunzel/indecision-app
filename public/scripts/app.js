@@ -2,6 +2,14 @@
 
 console.log('App.js is running!');
 
+// create app object title/subtitle
+// user title/subtitle in the template
+// render template
+var app = {
+    title: 'The Indecision App',
+    subtitle: 'Some random content'
+};
+
 // JSX - JavaScript XML
 var template = React.createElement(
     'div',
@@ -9,12 +17,12 @@ var template = React.createElement(
     React.createElement(
         'h1',
         null,
-        'Indecision App'
+        app.title
     ),
     React.createElement(
         'p',
         null,
-        'This is some info'
+        app.subtitle
     ),
     React.createElement(
         'ol',
@@ -38,26 +46,44 @@ var template = React.createElement(
 // create a p tag with age: xx
 // create p tag location: xxxx
 // render templateTwo in stead of template one
+var user = {
+    name: 'David',
+    age: 125,
+    location: 'Kronos'
+};
 
+function getLocation(location) {
+    if (location) {
+        return location;
+    } else {
+        return 'Unknown';
+    }
+}
+var userName = 'David';
+var userAge = 126;
+var userLocation = 'Kronos';
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'David Punzel'
+        user.name
     ),
     React.createElement(
         'p',
         null,
-        'Age: 122'
+        'Age: ',
+        user.age
     ),
     React.createElement(
         'p',
         null,
-        'Location: Kronos'
+        'Location: ',
+        getLocation(user.location)
     )
 );
 var appRoot = document.getElementById('app');
 // ReactDOM.render(template, appRoot);
+// ReactDOM.render(templateTwo, appRoot);
 ReactDOM.render(templateTwo, appRoot);
