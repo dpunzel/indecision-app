@@ -1,18 +1,18 @@
 console.log('App.js is running!');
 
-// create app object title/subtitle
-// user title/subtitle in the template
-// render template
 var app = {
     title: 'The Indecision App',
-    subtitle: 'Some random content'
+    subtitle: 'Some random content',
+    options: ['One', 'Two']
 };
 
 // JSX - JavaScript XML
 var template = (
         <div>
             <h1>{app.title}</h1>
-            <p>{app.subtitle}</p>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            {/*<p>{app.subtitle}</p>*/}
+            <p>{app.options.length > 0 ? 'Here are your options' + ' ' + app.options: 'No options'}</p>
             <ol>
                 <li>Item one</li>
                 <li>Item two</li>
@@ -20,15 +20,9 @@ var template = (
         </div>
     );
 
-    // Create a templateTwo var JSX expression
-    // div element
-    // h1 with my name
-    // create a p tag with age: xx
-    // create p tag location: xxxx
-    // render templateTwo in stead of template one
 var user = {
     name: 'David',
-    age: 125,
+    age: 12,
     location: 'Kronos'
 };
 
@@ -40,14 +34,11 @@ function getLocation(location) {
     }
 }
 
-// var userName = 'David';
-// var userAge = 126;
-// var userLocation = 'Kronos';
-
 var templateTwo = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        <p>Age: {user.age}</p>
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+        {/*<p>Age: {user.age}</p>*/}
         {/*<p>Location: {getLocation(user.location)}</p>*/}
         {getLocation(user.location)}
     </div>
@@ -55,4 +46,4 @@ var templateTwo = (
 var appRoot = document.getElementById('app');
 // ReactDOM.render(template, appRoot);
 // ReactDOM.render(templateTwo, appRoot);
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
