@@ -42,31 +42,47 @@ var template = React.createElement(
         )
     )
 );
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
+};
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+var reset = function reset() {
+    console.log('reset');
+};
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
+);
+console.log(templateTwo);
 
-// const user = {
-//     name: 'David',
-//     age: 12,
-//     location: 'Kronos'
-// };
-//
-// function getLocation(location) {
-//     if (location) {
-//         return <p>Location: {location}</p>;
-//     } else {
-//         return undefined;
-//     }
-// }
-//
-// const templateTwo = (
-//     <div>
-//         <h1>{user.name ? user.name : 'Anonymous'}</h1>
-//         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-//         {/*<p>Age: {user.age}</p>*/}
-//         {/*<p>Location: {getLocation(user.location)}</p>*/}
-//         {getLocation(user.location)}
-//     </div>
-// );
+// Challenge
+// Make button "-1" setup minusOne function and register - log "minusOne"
+// Make reset button "reset" - setup reset function
 var appRoot = document.getElementById('app');
 // ReactDOM.render(template, appRoot);
 // ReactDOM.render(templateTwo, appRoot);
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
