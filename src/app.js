@@ -3,66 +3,48 @@ console.log('App.js is running!');
 const app = {
     title: 'The Indecision App',
     subtitle: 'Some random content',
-    options: ['One', 'Two']
+    options: []
 };
 
+const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    const option = e.target.elements.option.value;
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render();
+    }
+};
+
+const onRemoveAll = () => {
+    app.options = [];
+    render();
+}
+
+const appRoot = document.getElementById('app');
+
+const render = () => {
 // JSX - JavaScript XML
-const template = (
+    const template = (
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
             {/*<p>{app.subtitle}</p>*/}
             <p>{app.options.length > 0 ? 'Here are your options' + ' ' + app.options: 'No options'}</p>
+            <p>{app.options.length}</p>
+            <button onClick={onRemoveAll}>Remove All</button>
             <ol>
                 <li>Item one</li>
                 <li>Item two</li>
             </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Options</button>
+            </form>
         </div>
     );
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();
-    console.log('addOne', count);
+    ReactDOM.render(template, appRoot);
 };
-const minusOne = () => {
-    count--;
-    renderCounterApp();
-    console.log('minusOne');
-};
-const reset = () => {
-    count = 0;
-    renderCounterApp();
-    console.log('reset')
-};
-// const templateTwo = (
-//     <div>
-//         <h1>Count: {count}</h1>
-//         <button onClick={addOne}>+1</button>
-//         <button onClick={minusOne}>-1</button>
-//         <button onClick={reset}>reset</button>
-//     </div>
-// );
-// console.log(templateTwo);
-
-// Challenge
-// Make button "-1" setup minusOne function and register - log "minusOne"
-// Make reset button "reset" - setup reset function
-const appRoot = document.getElementById('app');
-// ReactDOM.render(template, appRoot);
-// ReactDOM.render(templateTwo, appRoot);
-// ReactDOM.render(templateTwo, appRoot);
-
-const renderCounterApp = () => {
-    const templateTwo = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>reset</button>
-        </div>
-    );
-    ReactDOM.render(templateTwo, appRoot);
-};
-
-renderCounterApp();
+render();
